@@ -1,0 +1,199 @@
+$normalFontSize:24px;
+*{
+  padding:0;
+  margin:0;
+}
+body{
+  font-size:$normalFontSize;
+
+  nav{
+    width:100vw;
+    height:10vh;
+    background-color: rgba(152,187,219,0.5);
+    display: flex;
+    box-shadow: 0 0px 9px 0 rgba(0,0,0,0.16);
+    justify-content:space-around;
+    align-items: center;
+    #nameContainer{
+      background-color: white;
+      height:90%;
+      width: 20%;
+      border-radius: 1vw;
+      text-align: center;
+      font-size: 80%;
+      #nameTitle{
+        color:gray;
+      }
+      #name{
+        font-size:$normalFontSize;
+      }
+
+    }
+    #kindsContainer{
+      width:20%;
+      height:90%;
+      text-align: center;
+      font-size:80%;
+      background-color: white;
+      border-radius: 1vw;
+      #categoryTitle{
+        color:gray;
+      }
+      #categoryNameContainer{
+        #category{
+          font-size:$normalFontSize;
+        }
+      }
+
+    }
+
+    #timesContainer{
+      color:white;
+      font-size: 80%;
+      opacity:0;
+      transition: opacity 0.3s linear;
+      span{
+        font-size:$normalFontSize;
+      }
+    }
+  }
+  main{
+    width:100vw;
+    height:90vh;
+    background-color: skyblue;
+    position: relative;
+    transition:opacity 5s linear;
+    #commentContainer{
+      z-index: 3;
+      width:50%;
+      height:25%;
+      background-color: white;
+      border-radius: 1vw;
+      position:absolute;
+      top:5%;
+      opacity:0;
+      right:20%;
+      box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.16);
+      transition: opacity 0.3s ease-in;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+      #comment{
+        transition: opacity 0.3s ease-in;
+      }
+    }
+    #graphImageContainer{
+      z-index:0;
+      position:absolute;
+      width:100%;
+      height:100%;
+      img{
+        width:100%;
+        height:100%;
+        display:block;
+        opacity:0.3;
+      }
+    }
+    #arcGraphContainer{
+      z-index: 1;
+      width:95%;
+      height:80%;
+      position: absolute;
+      display: flex;
+      left:5%;
+      bottom:0;
+    }
+    #oversign{
+        background-color: red;
+        width:10%;
+        height:0.5%;
+        opacity:0.5;
+        position:absolute;
+        z-index:2;
+        bottom:1%;
+        left:0;
+        transition: bottom 1.5s  linear,width 1.5s linear;
+    }
+    #verticalSignContainer{
+      background-color:white;
+      width:5%;
+      height:100%;
+      ul{
+        z-index:3;
+        font-size: 100%;
+        padding-top:5vh;
+        padding-left:1%;
+        li{
+          padding:calc(30vh /10/2) 0;
+
+          p{
+            text-align: right;
+          }
+        }
+      }
+    }
+    #singBoardContainer{
+      position:absolute;
+      bottom:0;
+      width:95%;
+      height:100%;
+      z-index:2;
+      left:5%;
+      #signBoards{
+        width:100%;
+        height:100%;
+        position:relative;
+        .signBoard{
+          width:8%;
+          position:absolute;
+          z-index:1;
+          //bottom:0;
+          .wrapper{
+            position:relative;
+            text-align: center;
+            img{
+              width:100%;
+            }
+            p{
+              color:brown;
+              font-weight:bolder;
+              position:absolute;
+              top:25%;
+              left:0;
+              right:0;
+              margin:0 auto;
+              font-size:80%;
+            }
+          }
+        }
+      }
+    }
+
+    #dogContainer{
+      z-index:4;
+      width:7%;
+      position:absolute;
+      transition:bottom 1.5s linear, left 1.5s linear, transform 0.2s linear -1.3s;
+      bottom:18%;
+      left:3%;
+      img{
+        width:100%;
+        display: block;
+      }
+    }
+    #goalContainer{
+      z-index: 2;
+      width:10%;
+      height:10%;
+      position:absolute;
+      right:0;
+      top:10%;
+      img{
+        display:block;
+        height:100%;
+        margin-left: auto;
+        transform: scale(-1,1);
+      }
+    }
+  }
+}
