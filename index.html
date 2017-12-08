@@ -6,57 +6,64 @@
   <link rel="stylesheet" href="style/index.min.css" />
   <script src="js/index.js"></script>
 </head>
-<body>
+<body onclick="pushStart()">
   <nav>
     <div id="nameContainer">
       <div id="nameTitle"><p>患者様名</p></div>
-      <div><p id="name">田島 拓実 様</p></div>
+      <div><p id="name">医療 太郎 様</p></div>
     </div>
     <div id="kindsContainer">
       <div id="categoryTitle"><p>カテゴリー</p></div>
-      <div id="categoryNameContainer"><p id="category">N/N</p></div>
+      <div id="categoryNameContainer"><p id="category">椅子・車椅子 </p></div>
     </div>
-    <div id="timesContainer">
+    <!-- <div id="timesContainer">
       <p>更新まであと<span id="counter">0</span>秒</p>
-    </div>
+    </div> -->
   </nav>
+
   <main id="main">
-    <div id="commentContainer">
-      <p id="comment">
+    <div id="categoryLikeTitleContainer">
+      <h1 id="patientNameLikeTitle">医療 太郎 様</h1>
+      <h1 id="categoryLikeTitle"><歩行・車椅子></h1>
     </div>
-    <div id="graphImageContainer">
-      <img id="graphImage" src="img/cloud2.jpg" />
-    </div>
-    <div id="arcGraphContainer">
-      <canvas id="arcGraph0"></canvas>
-    </div>
-    <div id=oversign></div>
-    <div id="verticalSignContainer">
-      <ul>
-        <li><p>100%</p></li>
-        <li><p>90%</p></li>
-        <li><p>80%</p></li>
-        <li><p>70%</p></li>
-        <li><p>60%</p></li>
-        <li><p>50%</p></li>
-        <li><p>40%</p></li>
-        <li><p>30%</p></li>
-        <li><p>20%</p></li>
-        <li><p>10%</p></li>
-      </ul>
-    </div>
-    <div id="singBoardContainer">
-      <div id="signBoards">
-
+    <div id="contentsContainer">
+      <div id="commentContainer">
+        <p id="comment"></p>
       </div>
-    </div>
+      <div id="graphImageContainer">
+        <img id="graphImage" src="img/cloud2.jpg" />
+      </div>
+      <div id="arcGraphContainer">
+        <canvas id="arcGraph0"></canvas>
+      </div>
+      <div id=oversign></div>
+      <div id="verticalSignContainer">
+        <ul>
+          <li><p>100%</p></li>
+          <li><p>90%</p></li>
+          <li><p>80%</p></li>
+          <li><p>70%</p></li>
+          <li><p>60%</p></li>
+          <li><p>50%</p></li>
+          <li><p>40%</p></li>
+          <li><p>30%</p></li>
+          <li><p>20%</p></li>
+          <li><p>10%</p></li>
+        </ul>
+      </div>
+      <div id="singBoardContainer">
+        <div id="signBoards">
 
-    <div id="dogContainer">
-      <img id="dog" src="img/dog_clime3.png" />
-    </div>
+        </div>
+      </div>
 
-    <div id="goalContainer">
-      <img src="img/flag.png">
+      <div id="dogContainer">
+        <img id="dog" src="img/dog_clime3.png" />
+      </div>
+
+      <div id="goalContainer">
+        <img src="img/flag.png">
+      </div>
     </div>
   </main>
 </body>

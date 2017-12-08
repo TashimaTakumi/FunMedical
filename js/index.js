@@ -6,12 +6,16 @@ var nowCategoryNo=0;
 
 var dummyData=[ [] , [] ];
 var dummyDataUseable=[ [], [] ];
-const comments=[ ["ここにコメントが入ります","これもコメントです"] , ["２ここにコメントが入ります","２これもコメントです"] ];
+var comments=[ ["ここにコメントが入ります","これもコメントです"] , ["２ここにコメントが入ります","２これもコメントです"] ];
 
 var fimLevelHeight=[];
 
-window.onload=function(){
+function pushStart(){
+
   setDummyData();
+
+  document.getElementById('categoryLikeTitle').innerHTML='<'+category[nowCategoryNo]+'>';
+
   init();
 }
 
@@ -21,12 +25,17 @@ function init(){
   console.log(nowCategoryNo);
   document.getElementById('category').textContent= category[nowCategoryNo];
 
+
   setArcGraphs();
 
+  //document.getElementById('categoryLikeTitleContainer').style.opacity='0';
+
   setSigns();
-  document.getElementById('main').style.transition='none';
-  document.getElementById('main').style.opacity="1";
-  document.getElementById('main').style.transition='opacity 3s linear';
+  document.getElementById('contentsContainer').style.transition='none';
+  document.getElementById('contentsContainer').style.opacity="1";
+  document.getElementById('contentsContainer').style.transition='opacity 3s linear';
+
+  document.getElementById('oversign').style.transition='bottom 1.5s  linear,width 1.5s linear';
 
   document.getElementById('dog').src='img/dog_clime3.png';
 
@@ -61,6 +70,21 @@ function setDummyData(){
       dummyDataUseable[category][6]=dummyData[category][dummyData[category].length-2];//昨日
       dummyDataUseable[category][7]=dummyData[category][dummyData[category].length-1];//今日
   }
+
+  for(let cate=0;cate<2;cate++){
+    let str;
+    if(dummyDataUseable[cate][0]+3<dummyDataUseable[cate][dummyDataUseable[cate].length-1]){
+      str='順調に登れてるワン！<br>退院までもうすぐだワン！！';
+    }else if(dummyDataUseable[cate][dummyDataUseable[cate].length-2]<dummyDataUseable[cate][dummyDataUseable[cate].length-1]){
+      str='昨日よりも高く登れたワン！！';
+    // }else if(dummyDataUseable[cate][0]<dummyDataUseable[cate][dummyDataUseable[cate].length-1]){
+    //   str='最初よりは進んでるワン';
+    }else{
+      str='たまには下ることもあるワン！<br>あきらめちゃダメだワン！！'
+    }
+    comments[cate][1]=str;
+  }
+
 
   console.log(dummyDataUseable);
 }
@@ -98,6 +122,8 @@ function animationStart(){
 
   let nowDeg=0;
 
+  const dog=document.getElementById('dog');
+
   const start =()=>{
     console.log("animation start");
     return new Promise((resolve,reject)=>{
@@ -111,6 +137,7 @@ function animationStart(){
 
       document.getElementById('oversign').style.bottom=`${nowDogBottom}px`;
       document.getElementById('oversign').style.width=`${nowDogLeft}px`;
+      document.getElementById('oversign').style.left=`0`;
 
       let imgCounter=0;
       const dogStyleChange=setInterval(()=>{
@@ -134,6 +161,7 @@ function animationStart(){
             console.log(counter);
             clearInterval(dogStyleChange);
             clearInterval(dogWalk);
+            dog.src='img/dog_normal.png';
             resolve();
           }
           if(counter<=dummyDataUseable[nowCategoryNo].length-2){
@@ -170,26 +198,31 @@ function animationStart(){
         },0.2*1000);
 
         const commentText=document.getElementById('comment');
-        commentText.textContent=`${category[nowCategoryNo]}の項目は全快まであと、${7-dummyDataUseable[nowCategoryNo][dummyDataUseable[nowCategoryNo].length-1]}だワン！`;
+        commentText.innerHTML=`${category[nowCategoryNo]}の山を登ってみたワン！！<br>全快まであと、${7-dummyDataUseable[nowCategoryNo][dummyDataUseable[nowCategoryNo].length-1]}くらいだワン！`;
         document.getElementById('commentContainer').style.opacity='1';
         setTimeout(()=>{
           commentText.style.opacity='0';
           setTimeout(()=>{
-            commentText.textContent=comments[nowCategoryNo][1];
+            commentText.innerHTML=comments[nowCategoryNo][1];
             commentText.style.opacity='1';
             setTimeout(()=>{
-              document.getElementById('main').style.opacity='0';
+              if(nowCategoryNo==0){
+                nowCategoryNo=1;
+              }else if(nowCategoryNo==1){
+                nowCategoryNo=0;
+              }
+              document.getElementById('categoryLikeTitle').textContent='<'+category[nowCategoryNo]+'>';
+              document.getElementById('contentsContainer').style.opacity='0';
               setTimeout(()=>{
                 clearInterval(dogStyleChange);
                 document.getElementById('commentContainer').style.opacity='0';
                 document.getElementById('dogContainer').style.transition='none';
                 document.getElementById('dogContainer').style.bottom='18%';
                 document.getElementById('dogContainer').style.left='3%';
-                if(nowCategoryNo==0){
-                  nowCategoryNo=1;
-                }else if(nowCategoryNo==1){
-                  nowCategoryNo=0;
-                }
+                document.getElementById('oversign').style.transition='none';
+                document.getElementById('oversign').style.bottom='18%';
+                document.getElementById('oversign').style.left='3%';
+
                 init();
                 document.getElementById('dogContainer').style.transition='bottom 1.5s linear, left 1.5s linear, transform 0.2s linear -1.3s';
                 resolve();
@@ -207,7 +240,7 @@ function animationStart(){
 function setArcGraphs(){
   var canvas;var ctx=[];
   let img = new Image();
-  img.src="img/field4.jpg";
+  img.src="img/field8.jpg";
   img.onload=()=>{
 
     const imgWidth=img.width; const imgHeight=img.height;
