@@ -10,7 +10,7 @@ var comments=[ ["ここにコメントが入ります","これもコメントで
 
 var fimLevelHeight=[];
 
-function pushStart(){
+window.onload=function(){
 
   setDummyData();
 
